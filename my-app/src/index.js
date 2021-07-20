@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
+import { Pagination } from './components/pagination';
+import './index.css';
 
-import { movieList } from './components/movieList';
+import { MovieList } from './components/movieList';
 // import { Form } from './components/form';
 
 ReactDOM.render(
   <React.StrictMode> 
     <movieList/>
+    <Pagination/>
   </React.StrictMode>,
   document.getElementById('root')
 );

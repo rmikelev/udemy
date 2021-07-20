@@ -1,3 +1,5 @@
+import { MoviesService } from "../services/moviesService"
+
 const movieList = () => {
 
     return (
@@ -6,3 +8,4 @@ const movieList = () => {
         </div>
     )
 }
+export default MoviesService

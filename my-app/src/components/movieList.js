@@ -1,67 +1,105 @@
-import { useEffect, useState } from 'react';
-import MoviesService  from  '../services/moviesService';
-import {movieDetails} from '../components/movieDetails';
-import { movieSearch } from '../components/movieSearch';
-import { movieModal }  from './movieModal';
-import { SearchBar } from './SearchBar';
-import { selectSeries } from 'async';
-
+import React, { useState } from 'react';
+import  MovieDetails  from './MovieDetails';
+import MovieModal from './MovieModal';
+import MovieService  from  '../services/MovieService';
+import  SearchBar  from './SearchBar';
+import Pagination from '../components/Pagination';
 
 export const MovieList = () => {
-    const moviesService = new MoviesService();
-    const [selectedMovies, setSelectedMovies] = useState();
+    const movieService = new MovieService();
+    const [selectedMovie, setSelectedMovie] = useState();
     const [movieList, setMovieList] = useState();
+    const [pageCount, setPageCount] = useState();
+    const [movieTitle, setMovieTitle] = useState();
+    const [currentPage, setCurrentPage] = useState();
     
-    useEffect(() => {
-        getMoviesByTitle('Bond');
-    }, []);
     
     const getMoviesByTitle = async (title) => {
-        const movieList = await moviesService.getMovieByTitle(title);
-
+        console.log(title);
+        setMovieTitle(title);
+        const movieList = await movieService.getMovieByTitle(title);
+        console.log(movieList);
+        setPageCount(Math.ceil(movieList.totalResults / 10));
         setMovieList(movieList.Search);
 
-    }          
+    } 
+    
+    const getMoviesByPage = async (page) => {
+        setCurrentPage(page);
+        const movieList = await movieService.getMovieByTitle(movieTitle, page);
+        setMovieList(movieList.Search);
+    }
+
     const onClose = () => setSelectedMovie(null);
 
     const onSearch = (title) => {
-        console.log(title);
+        console.log('onSearch')
+        getMoviesByTitle(title);
+       
     }
 
+    const renderPagination = () => {
+        return (
+            <div>
+                {
+                    [...pageCount].forEach((index) => {
+                        <button
+                        onClick={() => this.getMoviesByPage(index + 1)}
+                        disabled={index + 1 ===currentPage}
+                        >{ index + 1 }</button>
+                })
+            }
+                
+        </div>
+        )
+    }
     return (
         <div>
             <SearchBar onSearch={onSearch}/>
-            {
-                !selectedMovie && movieList && movieList.map((movie) => {
-                    return(
+            { !selectedMovie && movieList && 
+                <div>
+                    {
+                     movieList.map((movie) => {
+                        return(
                         <div>
-                        <img src= {movie.Poster} alt={'${movie.Title} poster'} />
-                        <div>
-                            <h5>{movie.Title}</h5>   
-                            <button 
-                                onClick={() => setSelectedMovie(movie.imdbID)}
-                            >Show Details</button>
-                        
-                        </div>
-                    
-                    </div>
-                     
-                                            
-                   
-                )        
-            })                            
+                    <img src= {movie.Poster} alt={`${movie.Title} poster`} />
+                            <div>
+                                <h5>{movie.Title}</h5>   
+                                <button 
+                                    onClick={() => setSelectedMovie(movie.imdbID)}
+                                >Show Details</button>
+                             </div>    
+                        </div>  
+                    )                                                          
+                })                                                              
         }
         {
-            selectedMovie && (
-                <movieModal show={selectedMovie} onClose={onClose}>
-                    <MovieDetails id={selectedMovie} />
-                </movieModal>
+            !!pageCount && (
+                <div>
+                    {
+                      [...Array(pageCount)].map((index) => {
+
+                          return(
+                            <button
+                                onClick={() => getMoviesByPage(index +1)}
+                                disabled={index +1 ===currentPage}
+                                >{ `${index = 1}` }</button>
+                      );  
+                    })
+                }
+            </div>
             )
         }
-        </div>
-    )
+     </div> 
+    } 
+        {
+            selectedMovie && (
+                <MovieModal show={selectedMovie} onClose={onClose}>
+                    <MovieDetails id={selectedMovie} />
+                </MovieModal>
+            )
         }
-
-            
- 
-    
+    </div>      
+)   
+}   
+export default MovieList

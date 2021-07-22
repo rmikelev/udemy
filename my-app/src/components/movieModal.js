@@ -1,6 +1,6 @@
 import React from 'react';
 
-const movieModal = ({show, onClose, children }) => {          
+const MovieModal = ({show, onClose, children }) => {          
 
   return show ? (
     <div className="modal fade show" id="exampleModal" tabIndex="-1" style={{display: 'block'}}>
@@ -21,4 +21,4 @@ const movieModal = ({show, onClose, children }) => {
   ): null;
 }
 
-export default movieModal;
+export default MovieModal;

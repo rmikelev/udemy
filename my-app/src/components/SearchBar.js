@@ -1,5 +1,8 @@
 import { useState } from "react";
-import Form from "react-bootstrap/Form"
+import Form from "react-bootstrap/Form";
+import FormGroup from 'react-bootstrap/FormGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import FormLabel  from "react-bootstrap/FormLabel";
 import Button from "react-bootstrap/Button"
 
 export const SearchBar = ({onSearch}) => {
@@ -13,15 +16,16 @@ export const SearchBar = ({onSearch}) => {
    return (
        <div>
            <Form onSubmit={(e) => onFormSubmit(e)}>
-               <Form.Group> 
-                   <Form.Label htmlFor="title">Title</Form.Label>
-                   <Form.Control
+               <FormGroup> 
+                   <FormLabel htmlFor="title">title</FormLabel>
+                   <FormControl
                         type="text"
                         name="title"
                         onChange={(e) => setTitle(e.target.value)}
                     />
                     <Button type='submit' disabled ={ !title }>Search</Button>
-               </Form.Group>
+               </FormGroup>
+               
            </Form>
        </div>
    ) 

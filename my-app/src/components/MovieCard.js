@@ -1,5 +1,5 @@
 
-const MovieCard = ({movie, setSelectedMovie, onAddToMovieList}) => {
+const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteClick }) => {
     return(
         <div>
                             
@@ -14,6 +14,15 @@ const MovieCard = ({movie, setSelectedMovie, onAddToMovieList}) => {
                     onClick={() => onAddToMovieList(movie.imdbID)}
                     >Add Movie</button>
                     } 
+
+                    {
+                       onDeleteClick &&
+                        <button
+                            variant="danger"
+                            onClick={() => onDeleteClick(movie.imdbID)}
+                            >Remove From List</button>
+
+                    }
                  </div>    
             </div>  
     )

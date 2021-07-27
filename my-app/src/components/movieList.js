@@ -6,7 +6,7 @@ import  SearchBar  from './SearchBar';
 import MovieCard from './MovieCard';
 import UserMovieListService from '../services/userMovieList.service';
 import Pagination from '../components/Pagination';
-import MovieListContainer from '../css/stylied';
+// import MovieListContainer from '../css/stylied';
 
 export const MovieList = () => {
     const movieService = new MovieService();
@@ -17,9 +17,8 @@ export const MovieList = () => {
     const [movieTitle, setMovieTitle] = useState();
     const [currentPage, setCurrentPage] = useState();
     
-    const onAddToMovieList = async(id) => {
-        await userMovieListService.addMovieToList(id)
-        
+    const onAddToMovieList = async(movie) => {
+        await userMovieListService.addMovieToList(movie)
     }
     const getMoviesByTitle = async (title) => {
         console.log(title);
@@ -51,7 +50,7 @@ export const MovieList = () => {
                     {
                      movieList.map((movie) => {
                         return(  
-                            <MovieCard movie={movie} setSelectedMovie={setSelectedMovie} onAddToMovieList ={onAddToMovieList}/>                               
+                            <MovieCard movie={movie} setSelectedMovie={setSelectedMovie} onAddToMovieList ={() => onAddToMovieList(movie)}/>                               
                     )                                                          
                 })                                                              
         }

@@ -1,28 +1,35 @@
+import Button from "react-bootstrap/Button";
+import StyledButtonContainer from "./styled";
 
-const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteClick }) => {
+export const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteClick }) => {
     return(
         <div>
                             
         <img src= {movie.Poster} alt={`${movie.Title} poster`} />
                 <div>
-                    <h5>{movie.Title}</h5>   
-                    <button 
+                    <h4>{movie.Title}</h4>   
+        {/* <StyledButtonContainer> */}
+                <Button btn-primary
                         onClick={() => setSelectedMovie(movie.imdbID)}
-                    >Show Details</button>
+                    >Show Details</Button>
                     {onAddToMovieList && 
-                    <button 
+                <Button btn-success
                     onClick={() => onAddToMovieList(movie.imdbID)}
-                    >Add Movie</button>
-                    } 
-
-                    {
-                       onDeleteClick &&
-                        <button
-                            variant="danger"
-                            onClick={() => onDeleteClick(movie.imdbID)}
-                            >Remove From List</button>
-
+                    >Add Movie To My List</Button>
                     }
+                {
+                onDeleteClick &&
+                    <Button
+                        variant="danger"
+                        onClick={() => onDeleteClick(movie.imdbID)}
+                    >Remove From List</Button>
+                }
+
+
+        {/* </StyledButtonContainer> */}
+                     
+
+                   
                  </div>    
             </div>  
     )

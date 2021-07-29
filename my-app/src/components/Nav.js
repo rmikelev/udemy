@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 
 export const Nav = () => {
     return(
-        <Navbar bg="light">
+        <Navbar bg="warning">
             <Container>
                 <Navbar.Brand>Movie Data Base Tool</Navbar.Brand>
                 <Navbar.Collapse>

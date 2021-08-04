@@ -38,28 +38,6 @@ export const UserMovieList = () => {
         </div>
         
     )
-        // const deleteMovieFromList = (id) => {
-        //     userMovieListService.removeMovieFromList(id);
-        //     setUserMovieList();
-        //     onCloseDelete();
-        // }
-//     return(
-//         <div>
-//             <MovieListContainer>
-     
-//                {
-//                     movieData.movieList && movieData.movieList.list.map((movie) => ( 
-//                 <MovieCard movie={movie} updateMovieData={updateMovieData} onDeleteClick={deleteMovieFromList}/>
-//     )
-//                     )
-                    
-            
-//     //         </MovieListContainer>
-//     //         <Modal show={!!movieData.selectedMovie} onClose={() => updateMovieData('selectedMovie', null)}>
-//     //             <MovieDetails id={movieData.selectedMovie} />
-//     //         </Modal>
-
-//         </div>
-//     );
+  
 };
 export default UserMovieList;

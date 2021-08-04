@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import StyledButtonContainer from "./styled";
+// import StyledButtonContainer from "./styled";
 
 export const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteClick }) => {
     return(
@@ -8,7 +8,7 @@ export const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteC
         <img src= {movie.Poster} alt={`${movie.Title} poster`} />
                 <div>
                     <h4>{movie.Title}</h4>   
-        {/* <StyledButtonContainer> */}
+      
                 <Button btn-primary
                         onClick={() => setSelectedMovie(movie.imdbID)}
                     >Show Details</Button>
@@ -26,7 +26,7 @@ export const MovieCard = ({ movie, setSelectedMovie, onAddToMovieList, onDeleteC
                 }
 
 
-        {/* </StyledButtonContainer> */}
+    
                      
 
                    

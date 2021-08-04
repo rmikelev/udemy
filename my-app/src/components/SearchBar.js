@@ -17,7 +17,7 @@ export const SearchBar = ({onSearch}) => {
        <div>
            <Form onSubmit={(e) => onFormSubmit(e)}>
                <FormGroup> 
-                   <FormLabel  htmlFor="title">Title</FormLabel>
+                   <FormLabel  htmlFor="title" className="text-danger">Title</FormLabel>
                    <FormControl
                         type="text"
                         name="title"

@@ -6,7 +6,7 @@ import  SearchBar  from './SearchBar';
 import MovieCard from './MovieCard';
 import UserMovieListService from '../services/userMovieList.service';
 import Pagination from '../components/Pagination';
-// import MovieListContainer from '../css/stylied';
+// import MovieListContainer from '../css/styled';
 
 export const MovieList = () => {
     const movieService = new MovieService();

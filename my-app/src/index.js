@@ -12,10 +12,10 @@ ReactDOM.render(
   <React.StrictMode>
      <BrowserRouter>
      <Nav />     
-     <Switch>
-       <Route exact path="/" component={MovieList}/>
-       <Route exact path="/user-movie-list" component={UserMovieList}/>
-     </Switch>
+      <Switch>
+        <Route exact path="/" component={MovieList}/>
+        <Route exact path="/user-movie-list" component={UserMovieList}/>
+      </Switch>
      </BrowserRouter>
 
   </React.StrictMode>,

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import button from "react-bootstrap/Button";
-<link src styles href="/src/css/styles.css"/>; 
+import styled from 'styled-components';
+
 
 export const Pagination = ({pageCount, getMoviesByPage, currentPage}) => {
 
@@ -8,8 +9,9 @@ export const Pagination = ({pageCount, getMoviesByPage, currentPage}) => {
 
     const restrictedValues = [1, 2, pageCount-2, pageCount-1, pageCount];
 
+        
     const PaginationButton = ({ page }) => (
-        <button 
+        <button  btn-primary      
             disabled={page === currentPage}
             onClick={() => getMoviesByPage(page)}
         >{ `${page}` }</button>
@@ -29,13 +31,13 @@ export const Pagination = ({pageCount, getMoviesByPage, currentPage}) => {
     return (
         <div>
             <div>
-                <button 
+                <button btn-primary
                     onClick={() => getMoviesByPage(currentPage - 1)}
                     disabled={currentPage  === 1}>
                     Back
                 </button>
                 <span>Page {currentPage}</span>
-                <button 
+                <button btn-primary
                     onClick={() => getMoviesByPage(currentPage + 1)}
                     disabled={currentPage === pageCount}>
                     Forward

@@ -9,8 +9,8 @@ export const Nav = () => {
             <Container>
                 <Navbar.Brand>Movie Data Base Tool</Navbar.Brand>
                 <Navbar.Collapse>
-                    <RBNav.Link href="/">Movie Search</RBNav.Link>
-                    <RBNav.Link href="/user-movie-list">my Movie List</RBNav.Link>
+                    <RBNav.Link href="/" className="text-danger">Movie Search</RBNav.Link>
+                    <RBNav.Link href="/user-movie-list" className="text-success">my Movie List</RBNav.Link>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
